@@ -1,0 +1,27 @@
+Sorted adjacency lists
+  A: B, C
+  B: A, C
+  C: A, B, D
+  D: C, E, F
+  E: D, F
+  F: D, E, G
+  G: F, H
+  H: G
+
+Discovery order: A B C D E F G H
+
+ID  parent  disc  low
+A   null    0     0
+B   A       1     0
+C   B       2     0
+D   C       3     3
+E   D       4     3
+F   E       5     3
+G   F       6     6
+H   G       7     7
+
+Components: 1 (roots: A)
+Bridge IDs: BR4, BR8, BR9
+Articulation IDs: C, D, F, G
+Edges on cycles: BR1, BR2, BR3, BR5, BR6, BR7
+Replay events: 53

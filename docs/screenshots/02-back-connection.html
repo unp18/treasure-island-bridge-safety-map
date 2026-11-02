@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>02-back-connection</title><style>:root{--bg:#ffffff;--fg:#1b1f24;--muted:#8a94a0;--card:#f4f6f8;--line:#d0d7de;--tree:#1f5fbf;--nontree:#7a3fc0;--bridge:#c62828;--hl:#e69f00;--vis:#fff3cd;--done:#cfe8d5;--btn:#1f5fbf;--btnfg:#ffffff}
+
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#1b1f24;font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.top{padding:10px 16px;border-bottom:1px solid #d0d7de}
+h1{font-size:19px;margin:0 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+h3{font-size:13px;margin:8px 0 2px}
+.controls button{font:inherit;font-weight:600;padding:7px 14px;margin:0 6px 4px 0;border:0;border-radius:6px;background:#1f5fbf;color:#ffffff;cursor:pointer}
+.controls button:disabled{opacity:.4;cursor:not-allowed}
+.controls button:focus-visible{outline:3px solid #e69f00;outline-offset:2px}
+.progress{margin-left:10px;font-weight:600}
+main{padding:10px 12px}
+.col{display:inline-block;vertical-align:top}
+.left{width:61%;padding-right:8px}.right{width:38%}
+.card{background:#f4f6f8;border:1px solid #d0d7de;border-radius:8px;padding:10px 12px;margin-bottom:10px;display:block}
+svg{width:100%;height:auto;display:block;background:#ffffff;border-radius:6px}
+.edge.untouched{stroke:#8a94a0}
+.edge.tree{stroke:#1f5fbf}
+.edge.nontree{stroke:#7a3fc0}
+.edge.bridge{stroke:#c62828}
+.bridge-gap{stroke:#ffffff}
+.edge-glow{stroke:#e69f00;opacity:.45}
+.t-edge{font-size:13px;fill:#1b1f24;paint-order:stroke;stroke:#ffffff;stroke-width:4px}
+.t-bridge{fill:#c62828;font-weight:700}
+.node .body{stroke:#1b1f24;fill:#ffffff}
+.node.visited .body{fill:#fff3cd}
+.node.finished .body{fill:#cfe8d5}
+.node.hl .body,.node.current .body{stroke:#e69f00}
+.art-ring{stroke:#c62828}
+.t-id{font-size:19px;font-weight:700;fill:#1b1f24}
+.t-name{font-size:14px;fill:#1b1f24;paint-order:stroke;stroke:#ffffff;stroke-width:4px;stroke-linejoin:round}
+.t-val{font-size:13px;fill:#8a94a0;paint-order:stroke;stroke:#ffffff;stroke-width:4px;stroke-linejoin:round}
+.t-mark{font-size:20px;fill:#e69f00}
+.t-art{font-size:13px;font-weight:700;fill:#c62828;paint-order:stroke;stroke:#ffffff;stroke-width:4px;stroke-linejoin:round}
+.evtext{margin:0;font-size:15px}
+.badge{font-size:11px;font-weight:600;padding:1px 6px;border:1px solid #d0d7de;border-radius:10px;vertical-align:middle}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:3px 5px;border-bottom:1px solid #d0d7de}
+.hist{margin:6px 0 0;padding-left:30px;max-height:170px;overflow:auto;position:relative}
+.hist li{padding:1px 0}
+.hist li.cur{font-weight:700;background:#fff3cd}
+details summary{cursor:pointer;font-weight:600}
+.err{border-color:#c62828}
+.none,.note{color:#8a94a0;margin:2px 0}
+.legend p{margin:3px 0;font-size:12px}
+ul{margin:2px 0;padding-left:20px}
+
+@media (max-width:760px){.left,.right{width:100%;padding-right:0;display:block}.top{padding:10px 12px}.card{overflow-x:auto}}
+</style></head><body><div id="app"><header class="top"><h1>Treasure-Island Bridge Safety Map</h1><div class="controls"><button type="button" data-action="load">Load My Archipelago</button><button type="button" data-action="step">Step</button><button type="button" data-action="run">Run to End</button><button type="button" data-action="reset">Reset</button><span class="progress">Step 7 of 53</span></div></header><main><div class="col left"><section class="card"><h2>Island map</h2><svg viewBox="0 0 800 560" role="img" aria-label="Island and bridge map"><g data-edge="BR1" data-style="tree"><line class="edge tree" x1="64" y1="343.6" x2="148" y2="196.4" stroke-width="6"/><text class="t-edge" x="95.6" y="269.1" text-anchor="end">BR1</text></g><g data-edge="BR2" data-style="tree"><line class="edge tree" x1="148" y1="196.4" x2="239" y2="297.6" stroke-width="6"/><text class="t-edge" x="202.4" y="239" text-anchor="start">BR2</text></g><g data-edge="BR3" data-style="nontree"><line class="edge-glow" x1="64" y1="343.6" x2="239" y2="297.6" stroke-width="16"/><line class="edge nontree" x1="64" y1="343.6" x2="239" y2="297.6" stroke-width="3" stroke-dasharray="9 7"/><text class="t-edge" x="148.4" y="309" text-anchor="middle">BR3</text></g><g data-edge="BR4" data-style="untouched"><line class="edge untouched" x1="239" y1="297.6" x2="351" y2="389.6" stroke-width="2"/><text class="t-edge" x="302.6" y="334.3" text-anchor="start">BR4</text></g><g data-edge="BR5" data-style="untouched"><line class="edge untouched" x1="351" y1="389.6" x2="428" y2="150.4" stroke-width="2"/><text class="t-edge" x="378.1" y="271.3" text-anchor="end">BR5</text></g><g data-edge="BR6" data-style="untouched"><line class="edge untouched" x1="428" y1="150.4" x2="512" y2="389.6" stroke-width="2"/><text class="t-edge" x="481.3" y="271" text-anchor="start">BR6</text></g><g data-edge="BR7" data-style="untouched"><line class="edge untouched" x1="351" y1="389.6" x2="512" y2="389.6" stroke-width="2"/><text class="t-edge" x="431.5" y="377.6" text-anchor="middle">BR7</text></g><g data-edge="BR8" data-style="untouched"><line class="edge untouched" x1="512" y1="389.6" x2="603" y2="297.6" stroke-width="2"/><text class="t-edge" x="549" y="335.2" text-anchor="end">BR8</text></g><g data-edge="BR9" data-style="untouched"><line class="edge untouched" x1="603" y1="297.6" x2="715" y2="389.6" stroke-width="2"/><text class="t-edge" x="666.6" y="334.3" text-anchor="start">BR9</text></g><g data-node="A" class="node visited hl"><circle class="body" cx="64" cy="343.6" r="22" stroke-width="4"/><text class="t-id" x="64" y="349.6" text-anchor="middle">A</text><text class="t-name" x="64" y="385.6" text-anchor="middle">Anchor Cove</text><text class="t-val" x="64" y="400.6" text-anchor="middle">d=0 low=0</text></g><g data-node="B" class="node visited"><circle class="body" cx="148" cy="196.4" r="22" stroke-width="2.5"/><text class="t-id" x="148" y="202.4" text-anchor="middle">B</text><text class="t-name" x="148" y="238.4" text-anchor="middle">Beacon Reef</text><text class="t-val" x="148" y="253.4" text-anchor="middle">d=1 low=1</text></g><g data-node="C" class="node visited current hl"><circle class="body" cx="239" cy="297.6" r="22" stroke-width="6"/><text class="t-id" x="239" y="303.6" text-anchor="middle">C</text><text class="t-mark" x="209" y="303.6" text-anchor="end">▶</text><text class="t-name" x="239" y="339.6" text-anchor="middle">Coral Key</text><text class="t-val" x="239" y="354.6" text-anchor="middle">d=2 low=0</text></g><g data-node="D" class="node unvisited"><circle class="body" cx="351" cy="389.6" r="22" stroke-width="2.5" stroke-dasharray="5 4"/><text class="t-id" x="351" y="395.6" text-anchor="middle">D</text><text class="t-name" x="351" y="431.6" text-anchor="middle">Driftwood Isle</text><text class="t-val" x="351" y="446.6" text-anchor="middle">unvisited</text></g><g data-node="E" class="node unvisited"><circle class="body" cx="428" cy="150.4" r="22" stroke-width="2.5" stroke-dasharray="5 4"/><text class="t-id" x="428" y="156.4" text-anchor="middle">E</text><text class="t-name" x="428" y="192.4" text-anchor="middle">Emerald Atoll</text><text class="t-val" x="428" y="207.4" text-anchor="middle">unvisited</text></g><g data-node="F" class="node unvisited"><circle class="body" cx="512" cy="389.6" r="22" stroke-width="2.5" stroke-dasharray="5 4"/><text class="t-id" x="512" y="395.6" text-anchor="middle">F</text><text class="t-name" x="512" y="431.6" text-anchor="middle">Fisher&#39;s Rest</text><text class="t-val" x="512" y="446.6" text-anchor="middle">unvisited</text></g><g data-node="G" class="node unvisited"><circle class="body" cx="603" cy="297.6" r="22" stroke-width="2.5" stroke-dasharray="5 4"/><text class="t-id" x="603" y="303.6" text-anchor="middle">G</text><text class="t-name" x="603" y="339.6" text-anchor="middle">Gull Rock</text><text class="t-val" x="603" y="354.6" text-anchor="middle">unvisited</text></g><g data-node="H" class="node unvisited"><circle class="body" cx="715" cy="389.6" r="22" stroke-width="2.5" stroke-dasharray="5 4"/><text class="t-id" x="715" y="395.6" text-anchor="middle">H</text><text class="t-name" x="715" y="431.6" text-anchor="middle">Harbor Point</text><text class="t-val" x="715" y="446.6" text-anchor="middle">unvisited</text></g></svg></section><section class="card event" aria-live="polite"><h2>Current event <span class="badge">INSPECT_EDGE</span></h2><p class="evtext">From Coral Key (C), bridge BR3 reaches already-visited Anchor Cove (A) (discovery 0), which is not its parent: a back-connection. min(2, 0): low[C] 2 → 0.</p></section><details class="card" open><summary>Event history (7)</summary><ol class="hist"><li value="1">Start a new search at Anchor Cove (A), a component root. discovery = low = 0.</li><li value="2">From Anchor Cove (A), bridge BR1 leads to unvisited Beacon Reef (B): a tree edge. low[A] stays 0.</li><li value="3">Arrive at Beacon Reef (B) from Anchor Cove (A). discovery = low = 1.</li><li value="4">From Beacon Reef (B), bridge BR1 leads back to its parent Anchor Cove (A): ignored. low[B] stays 1.</li><li value="5">From Beacon Reef (B), bridge BR2 leads to unvisited Coral Key (C): a tree edge. low[B] stays 1.</li><li value="6">Arrive at Coral Key (C) from Beacon Reef (B). discovery = low = 2.</li><li value="7" class="cur">From Coral Key (C), bridge BR3 reaches already-visited Anchor Cove (A) (discovery 0), which is not its parent: a back-connection. min(2, 0): low[C] 2 → 0.</li></ol></details></div><div class="col right"><section class="card summary"><h2>Safety summary</h2>
+<p>Components: <b>1</b> found so far</p>
+<h3>Critical bridges (0)</h3><p class="none">None revealed yet.</p>
+<h3>Articulation islands (0)</h3><p class="none">None revealed yet.</p>
+<p class="note">Results appear when the replay reaches them.</p></section><section class="card"><h2>Node table</h2><table><thead><tr><th>Island</th><th>Parent</th><th>Disc</th><th>Low</th><th>State</th></tr></thead><tbody><tr><td><b>A</b> Anchor Cove</td><td>root</td><td>0</td><td>0</td><td>searching</td></tr><tr><td><b>B</b> Beacon Reef</td><td>A</td><td>1</td><td>1</td><td>searching</td></tr><tr><td><b>C</b> Coral Key</td><td>B</td><td>2</td><td>0</td><td>searching</td></tr><tr><td><b>D</b> Driftwood Isle</td><td>—</td><td>—</td><td>—</td><td>unvisited</td></tr><tr><td><b>E</b> Emerald Atoll</td><td>—</td><td>—</td><td>—</td><td>unvisited</td></tr><tr><td><b>F</b> Fisher&#39;s Rest</td><td>—</td><td>—</td><td>—</td><td>unvisited</td></tr><tr><td><b>G</b> Gull Rock</td><td>—</td><td>—</td><td>—</td><td>unvisited</td></tr><tr><td><b>H</b> Harbor Point</td><td>—</td><td>—</td><td>—</td><td>unvisited</td></tr></tbody></table></section><section class="card legend"><h2>Key</h2>
+<p><b>Bridges (lines):</b> thin grey = not inspected yet · <b>bold solid</b> = DFS tree edge · <b>dashed</b> = inspected non-tree edge · <b>double red line + BRIDGE</b> = critical bridge · amber glow = this event.</p>
+<p><b>Islands:</b> dashed ring = unvisited · ring with d/low = discovered · pale fill = searching, solid fill = done · ▶ = current · <b>★ ARTICULATION</b> with dotted outer ring = critical island.</p></section></div></main></div></body></html>
