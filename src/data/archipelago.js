@@ -1,18 +1,17 @@
 // The candidate-created main demonstration graph.
-// This file contains ONLY the graph (nodes + edges). It never contains
-// expected results; those live in docs/oracle.md and test/oracle.js.
+// This file contains ONLY the graph (nodes + edges): no expected results.
 // Coordinates (0-100) affect presentation only.
 
 export const archipelago = {
   nodes: [
-    { id: 'A', name: 'Anchor Cove',    x: 12, y: 25 },
-    { id: 'B', name: 'Beacon Reef',    x: 28, y: 10 },
-    { id: 'C', name: 'Coral Key',      x: 30, y: 45 },
-    { id: 'D', name: 'Driftwood Isle', x: 50, y: 55 },
-    { id: 'E', name: 'Emerald Atoll',  x: 62, y: 30 },
-    { id: 'F', name: "Fisher's Rest",  x: 72, y: 62 },
-    { id: 'G', name: 'Gull Rock',      x: 88, y: 45 },
-    { id: 'H', name: 'Harbor Point',   x: 90, y: 80 },
+    { id: 'A', name: 'Anchor Cove',    x: 2, y: 66 },
+    { id: 'B', name: 'Beacon Reef',    x: 14, y: 34 },
+    { id: 'C', name: 'Coral Key',      x: 27, y: 56 },
+    { id: 'D', name: 'Driftwood Isle', x: 43, y: 76 },
+    { id: 'E', name: 'Emerald Atoll',  x: 54, y: 24 },
+    { id: 'F', name: "Fisher's Rest",  x: 66, y: 76 },
+    { id: 'G', name: 'Gull Rock',      x: 79, y: 56 },
+    { id: 'H', name: 'Harbor Point',   x: 95, y: 76 },
   ],
   edges: [
     { id: 'BR1', from: 'A', to: 'B' },

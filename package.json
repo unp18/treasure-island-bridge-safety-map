@@ -1,10 +1,13 @@
 {
   "name": "treasure-island-bridge-safety-map",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Interactive low-link (bridges and articulation points) replay for a festival archipelago.",
   "type": "module",
   "scripts": {
-    "test": "node --test test/*.test.js"
+    "start": "node scripts/serve.js",
+    "test": "node --test test/*.test.js",
+    "report": "node scripts/report.js",
+    "snapshots": "node scripts/snapshot.js"
   },
   "license": "MIT"
 }

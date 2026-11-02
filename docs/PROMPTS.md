@@ -11,3 +11,13 @@ Record each prompt, what it produced, and what you changed or rejected.
 - **Prompt:** "create a new repo in github and start with step1 and 2"
 - **Produced:** archipelago, hand-derived oracle, event-schema draft, TDD engine, mutation check.
 - **Changed/validated by me:** (fill in: re-derive the oracle trace by hand and confirm it)
+
+## 3. Step 3: events and replay model
+- **Prompt:** "go ahead"
+- **Produced:** event emission in `analyze`, pure `stateAt`, `describeEvent`, `Replay` controller, hand-derived golden trace, second mutation check.
+- **Changed/validated by me:** (fill in: re-derive the 53-event trace for a few steps; explain return order RETURN -> CLASSIFY -> ARTICULATION)
+
+## 4. Steps 4 and 5: UI, hardening, evidence
+- **Prompt:** "complete step 4 and 5 as well"
+- **Produced:** view-model + HTML renderer + SVG map + CSS, tests for UI, scripts (serve/report/snapshot), mutation checks, rehearsed live modifications, docs.
+- **Changed/validated by me:** (fill in: open it with `npm start`, step through BR9 and BR5, read the code in `viewmodel.js`)
